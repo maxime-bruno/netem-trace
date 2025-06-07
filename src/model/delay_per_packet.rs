@@ -642,7 +642,7 @@ impl NormalizedDelayPerPacketConfig {
             .mean
             .unwrap_or_else(|| Delay::from_millis(12))
             .as_secs_f64();
-        let sigma = self.std_dev.unwrap_or_else(|| Delay::ZERO).as_secs_f64() / mean;
+        let sigma = self.std_dev.unwrap_or(Delay::ZERO).as_secs_f64() / mean;
         let lower = self
             .lower_bound
             .unwrap_or_else(|| Delay::ZERO)
